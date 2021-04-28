@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC420C052639B36600FA4A1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC420C042639B36600FA4A1A /* LoginViewController.swift */; };
+		AC420C082639B39500FA4A1A /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC420C072639B39500FA4A1A /* LoginViewController.storyboard */; };
+		AC420C112639B4FD00FA4A1A /* UIviewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC420C102639B4FD00FA4A1A /* UIviewController+Ext.swift */; };
+		AC601BCA26330AE0001DDE01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC601BC926330AE0001DDE01 /* AppDelegate.swift */; };
+		AC601BCC26330AE0001DDE01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC601BCB26330AE0001DDE01 /* SceneDelegate.swift */; };
+		AC601BD426330AE0001DDE01 /* EcoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC601BD226330AE0001DDE01 /* EcoApp.xcdatamodeld */; };
+		AC601BD626330AE2001DDE01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC601BD526330AE2001DDE01 /* Assets.xcassets */; };
+		AC601BD926330AE2001DDE01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC601BD726330AE2001DDE01 /* LaunchScreen.storyboard */; };
+		AC601BE326330B2B001DDE01 /* ParseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC601BE226330B2B001DDE01 /* ParseSwift */; };
+		ACB52F922639B55A002137FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB52F912639B55A002137FF /* User.swift */; };
+		ACC4EBCF2639B859005D9728 /* HabitListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBC92639B859005D9728 /* HabitListPresenter.swift */; };
+		ACC4EBD02639B859005D9728 /* HabitListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBCA2639B859005D9728 /* HabitListWorker.swift */; };
+		ACC4EBD12639B859005D9728 /* HabitListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBCB2639B859005D9728 /* HabitListRouter.swift */; };
+		ACC4EBD22639B859005D9728 /* HabitListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBCC2639B859005D9728 /* HabitListModels.swift */; };
+		ACC4EBD32639B859005D9728 /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBCD2639B859005D9728 /* HabitListViewController.swift */; };
+		ACC4EBD42639B859005D9728 /* HabitListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBCE2639B859005D9728 /* HabitListInteractor.swift */; };
+		ACC4EBD72639B881005D9728 /* HabitListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACC4EBD62639B881005D9728 /* HabitListViewController.storyboard */; };
+		ACC4EBE42639C42D005D9728 /* Login+Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBE32639C42D005D9728 /* Login+Apple.swift */; };
+		ACC4EBE72639D240005D9728 /* Login+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4EBE62639D240005D9728 /* Login+Router.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AC420C042639B36600FA4A1A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AC420C072639B39500FA4A1A /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		AC420C0D2639B40B00FA4A1A /* EcoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcoApp.entitlements; sourceTree = "<group>"; };
+		AC420C102639B4FD00FA4A1A /* UIviewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIviewController+Ext.swift"; sourceTree = "<group>"; };
+		AC601BC626330AE0001DDE01 /* EcoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC601BC926330AE0001DDE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC601BCB26330AE0001DDE01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AC601BD326330AE0001DDE01 /* EcoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EcoApp.xcdatamodel; sourceTree = "<group>"; };
+		AC601BD526330AE2001DDE01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC601BD826330AE2001DDE01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC601BDA26330AE2001DDE01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC601BE526330ED0001DDE01 /* ParseSwift.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ParseSwift.playground; sourceTree = SOURCE_ROOT; };
+		ACB52F912639B55A002137FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ACC4EBC92639B859005D9728 /* HabitListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListPresenter.swift; sourceTree = "<group>"; };
+		ACC4EBCA2639B859005D9728 /* HabitListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListWorker.swift; sourceTree = "<group>"; };
+		ACC4EBCB2639B859005D9728 /* HabitListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListRouter.swift; sourceTree = "<group>"; };
+		ACC4EBCC2639B859005D9728 /* HabitListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListModels.swift; sourceTree = "<group>"; };
+		ACC4EBCD2639B859005D9728 /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
+		ACC4EBCE2639B859005D9728 /* HabitListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListInteractor.swift; sourceTree = "<group>"; };
+		ACC4EBD62639B881005D9728 /* HabitListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HabitListViewController.storyboard; sourceTree = "<group>"; };
+		ACC4EBE32639C42D005D9728 /* Login+Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Apple.swift"; sourceTree = "<group>"; };
+		ACC4EBE62639D240005D9728 /* Login+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Router.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC601BC326330AE0001DDE01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC601BE326330B2B001DDE01 /* ParseSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC420C022639B34F00FA4A1A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AC420C042639B36600FA4A1A /* LoginViewController.swift */,
+				ACC4EBE62639D240005D9728 /* Login+Router.swift */,
+				ACC4EBE32639C42D005D9728 /* Login+Apple.swift */,
+				AC420C072639B39500FA4A1A /* LoginViewController.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AC420C0F2639B4EE00FA4A1A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC420C102639B4FD00FA4A1A /* UIviewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AC420C132639B51F00FA4A1A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACB52F912639B55A002137FF /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC601BBD26330AE0001DDE01 = {
+			isa = PBXGroup;
+			children = (
+				AC601BC826330AE0001DDE01 /* EcoApp */,
+				AC601BC726330AE0001DDE01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC601BC726330AE0001DDE01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC601BC626330AE0001DDE01 /* EcoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC601BC826330AE0001DDE01 /* EcoApp */ = {
+			isa = PBXGroup;
+			children = (
+				AC601BC926330AE0001DDE01 /* AppDelegate.swift */,
+				ACB52F952639B632002137FF /* Scenes */,
+				AC420C132639B51F00FA4A1A /* Models */,
+				AC420C0F2639B4EE00FA4A1A /* Extensions */,
+				AC601BE526330ED0001DDE01 /* ParseSwift.playground */,
+				AC601BCB26330AE0001DDE01 /* SceneDelegate.swift */,
+				AC601BD526330AE2001DDE01 /* Assets.xcassets */,
+				AC601BD726330AE2001DDE01 /* LaunchScreen.storyboard */,
+				AC601BDA26330AE2001DDE01 /* Info.plist */,
+				AC420C0D2639B40B00FA4A1A /* EcoApp.entitlements */,
+				AC601BD226330AE0001DDE01 /* EcoApp.xcdatamodeld */,
+			);
+			path = EcoApp;
+			sourceTree = "<group>";
+		};
+		ACB52F952639B632002137FF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ACB52F962639B648002137FF /* HabitList */,
+				AC420C022639B34F00FA4A1A /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		ACB52F962639B648002137FF /* HabitList */ = {
+			isa = PBXGroup;
+			children = (
+				ACC4EBC92639B859005D9728 /* HabitListPresenter.swift */,
+				ACC4EBCA2639B859005D9728 /* HabitListWorker.swift */,
+				ACC4EBCB2639B859005D9728 /* HabitListRouter.swift */,
+				ACC4EBCC2639B859005D9728 /* HabitListModels.swift */,
+				ACC4EBCE2639B859005D9728 /* HabitListInteractor.swift */,
+				ACC4EBCD2639B859005D9728 /* HabitListViewController.swift */,
+				ACC4EBD62639B881005D9728 /* HabitListViewController.storyboard */,
+			);
+			path = HabitList;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC601BC526330AE0001DDE01 /* EcoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC601BDD26330AE2001DDE01 /* Build configuration list for PBXNativeTarget "EcoApp" */;
+			buildPhases = (
+				AC601BC226330AE0001DDE01 /* Sources */,
+				AC601BC326330AE0001DDE01 /* Frameworks */,
+				AC601BC426330AE0001DDE01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EcoApp;
+			packageProductDependencies = (
+				AC601BE226330B2B001DDE01 /* ParseSwift */,
+			);
+			productName = EcoApp;
+			productReference = AC601BC626330AE0001DDE01 /* EcoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC601BBE26330AE0001DDE01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					AC601BC526330AE0001DDE01 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = AC601BC126330AE0001DDE01 /* Build configuration list for PBXProject "EcoApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC601BBD26330AE0001DDE01;
+			packageReferences = (
+				AC601BE126330B2B001DDE01 /* XCRemoteSwiftPackageReference "Parse-Swift" */,
+			);
+			productRefGroup = AC601BC726330AE0001DDE01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC601BC526330AE0001DDE01 /* EcoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC601BC426330AE0001DDE01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC601BD926330AE2001DDE01 /* LaunchScreen.storyboard in Resources */,
+				AC420C082639B39500FA4A1A /* LoginViewController.storyboard in Resources */,
+				AC601BD626330AE2001DDE01 /* Assets.xcassets in Resources */,
+				ACC4EBD72639B881005D9728 /* HabitListViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC601BC226330AE0001DDE01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC601BCA26330AE0001DDE01 /* AppDelegate.swift in Sources */,
+				ACC4EBE42639C42D005D9728 /* Login+Apple.swift in Sources */,
+				ACC4EBE72639D240005D9728 /* Login+Router.swift in Sources */,
+				AC601BCC26330AE0001DDE01 /* SceneDelegate.swift in Sources */,
+				AC420C052639B36600FA4A1A /* LoginViewController.swift in Sources */,
+				ACC4EBD02639B859005D9728 /* HabitListWorker.swift in Sources */,
+				AC420C112639B4FD00FA4A1A /* UIviewController+Ext.swift in Sources */,
+				AC601BD426330AE0001DDE01 /* EcoApp.xcdatamodeld in Sources */,
+				ACB52F922639B55A002137FF /* User.swift in Sources */,
+				ACC4EBD42639B859005D9728 /* HabitListInteractor.swift in Sources */,
+				ACC4EBD22639B859005D9728 /* HabitListModels.swift in Sources */,
+				ACC4EBCF2639B859005D9728 /* HabitListPresenter.swift in Sources */,
+				ACC4EBD12639B859005D9728 /* HabitListRouter.swift in Sources */,
+				ACC4EBD32639B859005D9728 /* HabitListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AC601BD726330AE2001DDE01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC601BD826330AE2001DDE01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC601BDB26330AE2001DDE01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC601BDC26330AE2001DDE01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC601BDE26330AE2001DDE01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EcoApp/EcoApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 82B4V3BBVD;
+				INFOPLIST_FILE = EcoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.artem.ecoapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC601BDF26330AE2001DDE01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EcoApp/EcoApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 82B4V3BBVD;
+				INFOPLIST_FILE = EcoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.artem.ecoapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC601BC126330AE0001DDE01 /* Build configuration list for PBXProject "EcoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC601BDB26330AE2001DDE01 /* Debug */,
+				AC601BDC26330AE2001DDE01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC601BDD26330AE2001DDE01 /* Build configuration list for PBXNativeTarget "EcoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC601BDE26330AE2001DDE01 /* Debug */,
+				AC601BDF26330AE2001DDE01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC601BE126330B2B001DDE01 /* XCRemoteSwiftPackageReference "Parse-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/parse-community/Parse-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC601BE226330B2B001DDE01 /* ParseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC601BE126330B2B001DDE01 /* XCRemoteSwiftPackageReference "Parse-Swift" */;
+			productName = ParseSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		AC601BD226330AE0001DDE01 /* EcoApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC601BD326330AE0001DDE01 /* EcoApp.xcdatamodel */,
+			);
+			currentVersion = AC601BD326330AE0001DDE01 /* EcoApp.xcdatamodel */;
+			path = EcoApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AC601BBE26330AE0001DDE01 /* Project object */;
+}

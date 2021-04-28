@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='macos' display-mode='raw' buildActiveScheme='true' timelineScrubberEnabled='true' last-migration='1130'>
+    <pages>
+        <page name='1 - Your first Object'/>
+        <page name='2 - Finding Objects'/>
+        <page name='3 - User - Sign Up'/>
+        <page name='4 - User - Continued'/>
+        <page name='5 - ACL'/>
+        <page name='6 - Installation'/>
+        <page name='7 - GeoPoint'/>
+        <page name='8 - Pointers'/>
+        <page name='9 - Files'/>
+        <page name='10 - Cloud Code'/>
+        <page name='11 - LiveQuery'/>
+        <page name='12 - Roles and Relations'/>
+        <page name='13 - Operations'/>
+        <page name='14 - Config'/>
+    </pages>
+</playground>
