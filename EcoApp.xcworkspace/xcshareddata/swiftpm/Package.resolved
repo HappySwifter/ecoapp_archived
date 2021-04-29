@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Facebook",
+        "repositoryURL": "https://github.com/facebook/facebook-ios-sdk",
+        "state": {
+          "branch": null,
+          "revision": "46a0b7416b20d86c36227f439026dc8102d5e7e2",
+          "version": "9.2.0"
+        }
+      },
+      {
+        "package": "ParseSwift",
+        "repositoryURL": "https://github.com/parse-community/Parse-Swift",
+        "state": {
+          "branch": null,
+          "revision": "a7a6f40d022005a555a63982b26fa6c2ed1587ac",
+          "version": "1.7.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

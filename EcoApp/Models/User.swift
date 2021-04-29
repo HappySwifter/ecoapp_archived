@@ -9,6 +9,8 @@ import Foundation
 import ParseSwift
 
 struct User: ParseUser {
+    var emailVerified: Bool?
+    
     //: These are required for `ParseObject`.
     var objectId: String?
     var createdAt: Date?

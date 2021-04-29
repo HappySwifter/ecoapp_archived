@@ -7,6 +7,7 @@ Login view controller.
 
 import UIKit
 import AuthenticationServices
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
@@ -26,7 +27,12 @@ class LoginViewController: UIViewController {
     func setupProviderLoginView() {
         let authorizationButton = ASAuthorizationAppleIDButton()
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        self.loginProviderStackView.addArrangedSubview(authorizationButton)
+        loginProviderStackView.addArrangedSubview(authorizationButton)
+        
+//        let loginButton = FBLoginButton()
+//        loginButton.delegate = self
+//        loginButton.permissions = ["public_profile", "email"]
+//        loginProviderStackView.addArrangedSubview(loginButton)
     }
     
     // - Tag: perform_appleid_password_request

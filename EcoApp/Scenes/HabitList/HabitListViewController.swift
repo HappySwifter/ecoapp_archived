@@ -69,6 +69,7 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    view.backgroundColor = .red
     doSomething()
   }
   
