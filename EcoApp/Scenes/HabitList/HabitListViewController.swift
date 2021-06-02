@@ -12,79 +12,102 @@
 
 import UIKit
 
-protocol HabitListDisplayLogic: class
+
+protocol HabitListDisplayLogic: AnyObject
 {
-  func displaySomething(viewModel: HabitList.Something.ViewModel)
+    func displaySomething(viewModel: HabitList.Something.ViewModel)
 }
 
 class HabitListViewController: UIViewController, HabitListDisplayLogic
 {
-  var interactor: HabitListBusinessLogic?
-  var router: (NSObjectProtocol & HabitListRoutingLogic & HabitListDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = HabitListInteractor()
-    let presenter = HabitListPresenter()
-    let router = HabitListRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var interactor: HabitListBusinessLogic?
+    var router: (NSObjectProtocol & HabitListRoutingLogic & HabitListDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    view.backgroundColor = .red
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = HabitList.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: HabitList.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = HabitListInteractor()
+        let presenter = HabitListPresenter()
+        let router = HabitListRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    enum Section {
+      case main
+    }
+    
+    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Habit>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Habit>
+    lazy var dataSource = makeDataSource()
+    
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate = self
+        configureLayout()
+        view.backgroundColor = .red
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        accountButton.setTitle(User.current?.username ?? "Вход", for: .normal)
+        self.interactor?.getHabitList() { [weak self] result in
+                switch result {
+                case .success(let habbits):
+                    self?.applySnapshot(habbits: habbits)
+
+                    self?.interactor?.setHabitFact(habit: habbits.first!)
+                case .failure:
+                    break
+                }
+            }
+    }
+
+
+    
+    func displaySomething(viewModel: HabitList.Something.ViewModel)
+    {
+        //nameTextField.text = viewModel.name
+    }
+    
+    @IBAction func logout() {
+        router?.routeToProfileOrLogin()
+    }
 }

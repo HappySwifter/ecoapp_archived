@@ -11,10 +11,16 @@
 //
 
 import UIKit
+import ParseSwift
+
+
 
 protocol HabitListBusinessLogic
 {
-  func doSomething(request: HabitList.Something.Request)
+    typealias HabitResult = ((Result<[Habit], ParseError>) -> Void)
+    func getHabitList(cb: @escaping HabitResult)
+    func setHabitFact(habit: Habit)
+    func runCloud()
 }
 
 protocol HabitListDataStore
@@ -28,14 +34,135 @@ class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
   var worker: HabitListWorker?
   //var name: String = ""
   
-  // MARK: Do something
   
-  func doSomething(request: HabitList.Something.Request)
-  {
-    worker = HabitListWorker()
-    worker?.doSomeWork()
     
-    let response = HabitList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    
+    
+    func getHabitList(cb: @escaping HabitResult) {
+        if appDelegate.isConnectedToServer() {
+            Habit.query().findAll { result in
+                switch result {
+                case .success(let habbits):
+                    for habbit in habbits {
+                        habbit.saveHabit()
+                    }
+                    cb(.success(habbits))
+                case .failure(let error):
+                    print(error)
+                    cb(.failure(error))
+                }
+            }
+        } else {
+            Log("server is not reachable", type: .error)
+        }
+    }
+    
+    func setHabitFact(habit: Habit) {
+        guard let user = User.current else {
+            return
+        }
+        
+//        var acl = ParseACL()
+//        acl.publicRead = true
+//        acl.publicWrite = true
+//        acl.setReadAccess(user: user, value: true)
+//        acl.setWriteAccess(user: user, value: true)
+//        acl.setReadAccess(roleName: "adminRole", value: true)
+//        acl.setWriteAccess(roleName: "adminRole", value: true)
+        
+        let habitFact = HabitFact(habit: habit, user: user, points: habit.points)
+
+        habitFact.save { result in
+            switch result {
+            case .success(let fact):
+                
+                fact.fetch { result in
+                    switch result {
+                    case .success(let fact):
+                        print(fact.ACL)
+                    case .failure(let error):
+                        Log(error.message, type: .error)
+                    }
+                }
+                
+            case .failure(let error):
+                Log(error.message, type: .error)
+            }
+        }
+        
+    }
+    
+    func runCloud() {
+
+        
+        let cloud = Cloud(functionJobName: "asyncFunction")
+
+//        cloud.startJob { _ in
+//            
+//        }
+        
+        cloud.runFunction { result in
+            switch result {
+            case .success(let response):
+                print("Response from cloud function: \(response)")
+            case .failure(let error):
+                assertionFailure("Error calling cloud function: \(error)")
+            }
+        }
+    }
+
 }
+
+
+
+//: Create your own value typed `ParseCloud` type.
+struct Cloud: ParseCloud {
+
+    //: Return type of your Cloud Function
+    typealias ReturnType = String
+
+    //: These are required for Object
+    var functionJobName: String
+
+    //: If your cloud function takes arguments, they can be passed by creating properties:
+    //var argument1: [String: Int] = ["test": 5]
+}
+
+
+
+//: Jobs can be run the same way by using the method `startJob()`.
+
+//: Saving objects with context for beforeSave, afterSave, etc.
+//: Create your own value typed `ParseObject`.
+struct GameScore: ParseObject {
+    //: Those are required for Object
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseACL?
+
+    //: Your own properties.
+    var score: Int = 0
+
+    //: Custom initializer.
+    init(score: Int) {
+        self.score = score
+    }
+
+    init(objectId: String?) {
+        self.objectId = objectId
+    }
+}
+
+//: Define a GameScore.
+//let score = GameScore(score: 10)
+//
+////: Save asynchronously (preferred way) with the context option.
+//score.save(options: [.context(["hello": "world"])]) { result in
+//    switch result {
+//    case .success(let savedScore):
+//        print("Successfully saved \(savedScore)")
+//    case .failure(let error):
+//        assertionFailure("Error saving: \(error)")
+//    }
+//}

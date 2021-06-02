@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol HabitListRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToProfileOrLogin()
 }
 
 protocol HabitListDataPassing
@@ -27,6 +27,16 @@ class HabitListRouter: NSObject, HabitListRoutingLogic, HabitListDataPassing
   weak var viewController: HabitListViewController?
   var dataStore: HabitListDataStore?
   
+    
+    func routeToProfileOrLogin() {
+        if User.current == nil {
+            let vc = getController(forName: LoginViewController.self)
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = getController(forName: ProfileViewController.self)
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
   // MARK: Routing
   
   //func routeToSomewhere(segue: UIStoryboardSegue?)

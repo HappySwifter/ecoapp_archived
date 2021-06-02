@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Register View Controller-->
+        <scene sceneID="55g-gT-1Xi">
+            <objects>
+                <viewController storyboardIdentifier="RegisterViewController" id="x9a-Jh-VjH" customClass="RegisterViewController" customModule="EcoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mgD-PE-gGk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5Z-vq-UHJ">
+                                <rect key="frame" x="20" y="101" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="h93-zb-761"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="x9a-Jh-VjH" id="wLI-1F-yIt"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4f-bl-OOK">
+                                <rect key="frame" x="20" y="154" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="7sa-RD-Tvb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="x9a-Jh-VjH" id="YK4-Re-YI9"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6q-Zk-tJR">
+                                <rect key="frame" x="20" y="214" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.28235294119999998" green="0.54117647059999996" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Регистрация">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerTouched" destination="x9a-Jh-VjH" eventType="touchUpInside" id="mdb-34-75b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uXK-Hk-9lG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uXK-Hk-9lG" firstAttribute="trailing" secondItem="Y4f-bl-OOK" secondAttribute="trailing" constant="20" id="E7f-JR-YhP"/>
+                            <constraint firstItem="uXK-Hk-9lG" firstAttribute="trailing" secondItem="s5Z-vq-UHJ" secondAttribute="trailing" constant="20" id="OTT-fJ-aQA"/>
+                            <constraint firstItem="s5Z-vq-UHJ" firstAttribute="leading" secondItem="uXK-Hk-9lG" secondAttribute="leading" constant="20" id="cIL-06-RFu"/>
+                            <constraint firstItem="s5Z-vq-UHJ" firstAttribute="top" secondItem="uXK-Hk-9lG" secondAttribute="top" constant="57" id="ghs-0v-K9j"/>
+                            <constraint firstItem="Y4f-bl-OOK" firstAttribute="top" secondItem="s5Z-vq-UHJ" secondAttribute="bottom" constant="19" id="hCw-4w-pXe"/>
+                            <constraint firstItem="Y4f-bl-OOK" firstAttribute="leading" secondItem="uXK-Hk-9lG" secondAttribute="leading" constant="20" id="utO-bI-CmV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginTextField" destination="s5Z-vq-UHJ" id="h0L-HN-CuI"/>
+                        <outlet property="passwordTextField" destination="Y4f-bl-OOK" id="scb-j6-vqS"/>
+                        <outlet property="registerButton" destination="w6q-Zk-tJR" id="MGF-Si-yod"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQh-4u-bKP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="72.991071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

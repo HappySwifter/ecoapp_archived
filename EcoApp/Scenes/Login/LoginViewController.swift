@@ -11,6 +11,8 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginField: UITextField!
+    @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
     override func viewDidLoad() {
@@ -20,6 +22,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        loginField.becomeFirstResponder()
         performExistingAccountSetupFlows()
     }
     

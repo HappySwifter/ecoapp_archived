@@ -10,22 +10,21 @@ import CoreData
 import ParseSwift
 import AuthenticationServices
 import FBSDKCoreKit
-
+import UserNotifications
 
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
+    private let serverUrl = "http://ecobalance.life:1337/parse"
+    private lazy var networkReachability = NetworkReachability(hostname: serverUrl)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let appId = "lfHl7oUyj7J8VSzXxENwQHG7wadwGYJ7AfJPzq23"
-        let clientKey = "dyaxUei4dXvrYgSEf5pQCEsURcJPgTBnFeC9MHY4"
-        let serverUrl = "https://parseapi.back4app.com"
+        let appId = "ecoapp"
+        let serverUrl = "http://ecobalance.life:1337/parse"
         ParseSwift.initialize(applicationId: appId,
-                              clientKey: clientKey,
                               serverURL: URL(string: serverUrl)!)
         
 //        if User.current == nil {
@@ -50,14 +49,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
         
+
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
+                 (granted, error) in
+                 print("Permission granted: \(granted)")
+                 guard granted else { return }
+                 self.getNotificationSettings()
+             }
+        
         return true
     }
     
+    func getNotificationSettings() {
+         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+             print("Notification settings: \(settings)")
+             guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+         }
+     }
+    
     func routeToHabitList() {
         let vc = getController(forName: HabitListViewController.self)
-        window?.rootViewController = vc
+        let nav = UINavigationController(rootViewController: vc)
+        window?.rootViewController = nav
     }
+    
+    func logoutUser() {
+        try? User.logout()
+//        presentLoginScreeenIfNeeded()
+    }
+    
+//    func presentLoginScreeenIfNeeded() {
+//        guard User.current == nil else {
+//            return
+//        }
+//        let vc = getController(forName: LoginViewController.self)
+//        window?.rootViewController = vc
+//    }
+    
+    func createInstallationOnParse(deviceTokenData:Data) {
+        if var inst = Installation.current {
+            inst.setDeviceToken(deviceTokenData)
+            inst.save { (result) in
+                switch result {
+                case .success(let inst):
+                    print("You have successfully saved your push installation to Back4App!", inst.installationId ?? "")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        createInstallationOnParse(deviceTokenData: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("error reg push:", error)
+    }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         ApplicationDelegate.shared.application(
@@ -114,5 +167,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    
+    func isConnectedToServer() -> Bool {
+        switch networkReachability.currentReachabilityStatus {
+        case .notReachable:
+            return false
+        case .reachableViaWiFi, .reachableViaWWAN:
+            return true
+        }
+    }
+    
 }
 
