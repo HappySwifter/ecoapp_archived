@@ -25,8 +25,10 @@ extension HabitListViewController: UICollectionViewDelegate {
             if let photoUrl = habbit.photo?.url {
                 cell?.photoImageView.kf.setImage(with: photoUrl)
             }
-            
             cell?.titleLabel.text = habbit.name
+            cell?.likeHandler = { [weak self] _ in
+                self?.interactor?.addToChecklist(habit: habbit)
+            }
             return cell
         })
         return dataSource

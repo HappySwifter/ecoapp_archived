@@ -17,7 +17,8 @@ struct Habit: ParseObject {
     
     var name: String?
     var desc: String?
-    var points: Int?
+    var points: Int? // сколько балов начислится пользователю, когда он выполнит привычку
+    var frequency: Int? // как часто (через сколько дней) привычка будет появляться в чеклисте
     var photo: ParseFile?
 
 }

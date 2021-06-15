@@ -78,6 +78,10 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(reloadHabits), for: .touchUpInside)
+        collectionView.refreshControl = refresh
+        
         collectionView.delegate = self
         configureLayout()
         view.backgroundColor = .red
@@ -88,19 +92,20 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         accountButton.setTitle(User.current?.username ?? "Вход", for: .normal)
-        self.interactor?.getHabitList() { [weak self] result in
-                switch result {
-                case .success(let habbits):
-                    self?.applySnapshot(habbits: habbits)
-
-                    self?.interactor?.setHabitFact(habit: habbits.first!)
-                case .failure:
-                    break
-                }
-            }
+        reloadHabits()
     }
 
 
+    @objc func reloadHabits() {
+        self.interactor?.getHabitList() { [weak self] result in
+            switch result {
+            case .success(let habbits):
+                self?.applySnapshot(habbits: habbits)
+            case .failure:
+                break
+            }
+        }
+    }
     
     func displaySomething(viewModel: HabitList.Something.ViewModel)
     {

@@ -13,6 +13,7 @@
         <!--Habit List View Controller-->
         <scene sceneID="Me6-sq-l64">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6k-9m-0wJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HabitListViewController" id="6tP-KK-weG" customClass="HabitListViewController" customModule="EcoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ip3-9F-cK3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -38,14 +39,29 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="inu-n7-A8F">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSz-li-kG9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rUi-KT-GYz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSz-li-kG9">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="40"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1U-ZQ-7i9">
+                                                                    <rect key="frame" x="49" y="0.0" width="326" height="40"/>
+                                                                    <state key="normal" title="Like"/>
+                                                                    <connections>
+                                                                        <action selector="likeTouched" destination="75f-jt-gG8" eventType="touchUpInside" id="D3c-df-fhQ"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="Aq8-2G-L7o"/>
+                                                            </constraints>
+                                                        </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3MQ-b6-3d3">
-                                                            <rect key="frame" x="0.0" y="25" width="375" height="302"/>
+                                                            <rect key="frame" x="0.0" y="41" width="375" height="286"/>
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
@@ -92,7 +108,6 @@
                         <outlet property="collectionView" destination="fFO-2r-PCF" id="eIv-F7-KPw"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i6k-9m-0wJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086.9565217391305" y="109.82142857142857"/>
         </scene>

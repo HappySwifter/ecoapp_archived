@@ -17,13 +17,14 @@ let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private let serverUrl = "http://ecobalance.life:1337/parse"
+//    private let serverUrl = "http://ecobalance.life:1337/parse"
+    private let serverUrl = "http://0.0.0.0:1337/parse"
+
     private lazy var networkReachability = NetworkReachability(hostname: serverUrl)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let appId = "ecoapp"
-        let serverUrl = "http://ecobalance.life:1337/parse"
         ParseSwift.initialize(applicationId: appId,
                               serverURL: URL(string: serverUrl)!)
         

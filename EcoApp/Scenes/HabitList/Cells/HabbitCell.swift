@@ -11,4 +11,9 @@ import UIKit
 class HabbitCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    var likeHandler: ((UICollectionViewCell) -> Void)?
+    
+    @IBAction private func likeTouched() {
+        likeHandler?(self)
+    }
 }
