@@ -15,7 +15,7 @@ import UIKit
 
 protocol HabitListDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: HabitList.Something.ViewModel)
+    func display(viewModel: HabitList.ViewModel)
 }
 
 class HabitListViewController: UIViewController, HabitListDisplayLogic
@@ -69,50 +69,81 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
       case main
     }
     
+    var refreshControl: UIRefreshControl!
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Habit>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Habit>
     lazy var dataSource = makeDataSource()
-    
+    var habits = [Habit]()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(reloadHabits), for: .touchUpInside)
-        collectionView.refreshControl = refresh
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fullRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
         
         collectionView.delegate = self
+
         configureLayout()
-        view.backgroundColor = .red
-        
+        reloadHabits()
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         accountButton.setTitle(User.current?.username ?? "Вход", for: .normal)
+    }
+
+
+    
+    @objc func fullRefresh() {
+        refreshControl.endRefreshing()
         reloadHabits()
     }
 
-
-    @objc func reloadHabits() {
-        self.interactor?.getHabitList() { [weak self] result in
-            switch result {
-            case .success(let habbits):
-                self?.applySnapshot(habbits: habbits)
-            case .failure:
-                break
-            }
-        }
+    func reloadHabits() {
+        let req = HabitList.Request(type: .getHabits(habits: []))
+        interactor?.make(request: req)
     }
     
-    func displaySomething(viewModel: HabitList.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    
+    func display(viewModel: HabitList.ViewModel) {
+        switch viewModel.type {
+        case .success(let api):
+            switch api {
+            case .getHabits(let habits):
+                self.habits = habits
+                applySnapshot(habbits: habits)
+            case .addToCheckList(let habit), .removeFromChecklist(let habit):
+                
+                for (index, _) in habits.enumerated() {
+                    if habits[index].objectId == habit.objectId {
+                        habits[index].isLiked = habit.isLiked
+                        break
+                    }
+                }
+                let habitToReload = habits.filter{ $0.objectId == habit.objectId }.first
+                applySnapshot(animatingDifferences: false, habbits: habits, reloadHabit: habitToReload)
+            case .addFact(let habit):
+                break
+            }
+        case .failure(let error):
+            switch error {
+            case .parseError(let parseError):
+                Log("\(parseError.message), \(parseError.localizedDescription)", type: .error)
+            case .notConnected:
+                Log("Нет соединения с сервером", type: .error)
+            case .ubauthorized:
+                Log("Не авторизован", type: .error)
+            }
+            
+        }
     }
     
     @IBAction func logout() {
         router?.routeToProfileOrLogin()
     }
+    
+
 }

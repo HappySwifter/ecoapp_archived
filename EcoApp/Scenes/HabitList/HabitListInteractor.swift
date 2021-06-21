@@ -17,103 +17,147 @@ import ParseSwift
 
 protocol HabitListBusinessLogic
 {
-    typealias HabitResult = ((Result<[Habit], ParseError>) -> Void)
-    func getHabitList(cb: @escaping HabitResult)
-    func setHabitFact(habit: Habit)
-    func runCloud()
-    func addToChecklist(habit: Habit)
+    func make(request: HabitList.Request)
 }
 
 protocol HabitListDataStore
 {
-  //var name: String { get set }
 }
 
 class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
 {
   var presenter: HabitListPresentationLogic?
   var worker: HabitListWorker?
-  //var name: String = ""
-  
-  
     
-    func addToChecklist(habit: Habit) {
+    
+    func make(request: HabitList.Request) {
+        guard appDelegate.isConnectedToServer() else {
+            let res = HabitList.Response(type: .failure(.notConnected))
+            presenter?.presentResponse(response: res)
+            return
+        }
+        guard let _ = User.current else {
+            let res = HabitList.Response(type: .failure(.ubauthorized))
+            presenter?.presentResponse(response: res)
+            return
+        }
+        switch request.type {
+        case .getHabits:
+            getHabitList(request: request)
+        case .addToCheckList(let habit):
+            addToChecklist(habit: habit, request: request)
+        case .removeFromChecklist(let habit):
+            removeFromChecklist(habit: habit, request: request)
+        case .addFact(let habit):
+            setHabitFact(habit: habit, request: request)
+        }
+    }
+    
+    func addToChecklist(habit: Habit, request: HabitList.Request) {
         let cloud = Cloud(functionJobName: "addToChecklist",
                           habit: habit,
                           frequency: habit.frequency!)
-//        cloud.startJob { _ in }
-        cloud.runFunction { result in
+        cloud.runFunction { [weak self] result in
             switch result {
-            case .success(let response):
-                print("Response from cloud function: \(response)")
+            case .success(let habit):
+                Log("habit liked \(habit)", type: .info)
+                let type = HabitList.addToCheckList(habit: habit)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
             case .failure(let error):
-                print("Error calling cloud function: \(error)")
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
             }
         }
     }
     
-    
-    func getHabitList(cb: @escaping HabitResult) {
-        if appDelegate.isConnectedToServer() {
-            Habit.query().findAll { result in
-                switch result {
-                case .success(let habbits):
-                    for habbit in habbits {
-                        habbit.saveHabit()
-                    }
-                    cb(.success(habbits))
-                case .failure(let error):
-                    print(error)
-                    cb(.failure(error))
-                }
-            }
-        } else {
-            Log("server is not reachable", type: .error)
-        }
-    }
-    
-    func setHabitFact(habit: Habit) {
-        guard let user = User.current else {
-            return
-        }
-        let habitFact = HabitFact(habit: habit, user: user, points: habit.points)
-        habitFact.save { result in
+    func removeFromChecklist(habit: Habit, request: HabitList.Request) {
+        let cloud = RemoveFromChecklist(functionJobName: "removeFromChecklist",
+                          habit: habit)
+        cloud.runFunction { [weak self] result in
             switch result {
-            case .success(let fact):
-                fact.fetch { result in
-                    switch result {
-                    case .success:
-                        break
-                    case .failure(let error):
-                        Log(error.message, type: .error)
-                    }
-                }
+            case .success(let habit):
+                Log("habit unliked \(habit)", type: .info)
+                let type = HabitList.removeFromChecklist(habit: habit)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
             case .failure(let error):
-                Log(error.message, type: .error)
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
             }
         }
     }
     
-    func runCloud() {
-//        let cloud = Cloud(functionJobName: "asyncFunction")
-////        cloud.startJob { _ in }
-//        cloud.runFunction { result in
-//            switch result {
-//            case .success(let response):
-//                print("Response from cloud function: \(response)")
-//            case .failure(let error):
-//                assertionFailure("Error calling cloud function: \(error)")
-//            }
-//        }
+    func getHabitList(request: HabitList.Request) {
+        let cloud = GetHabitsCloud(functionJobName: "getHabits")
+        cloud.runFunction { [weak self] result in
+            switch result {
+            case .success(let habits):
+                Log("habits count \(habits.count)", type: .info)
+                
+                let withFacts = habits
+                    .filter{ $0.lastFactDate != nil }
+                    .map{ "\($0.name ?? "") -> \($0.lastFactDate)" }
+                print(withFacts)
+                
+                
+                let type = HabitList.getHabits(habits: habits)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
+            case .failure(let error):
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
+            }
+        }
     }
+    
+    func setHabitFact(habit: Habit, request: HabitList.Request) {
+        let cloud = CreateFactCloud(functionJobName: "createFact",
+                                    habit: habit, frequency: habit.frequency!)
+        cloud.runFunction { [weak self] result in
+            switch result {
+            case .success(let habits):
+//                for habit in habits {
+//                    print("name", habit.name!, ":  _created_at", habit.facts?.first?._created_at?.fullDateString() ?? "")
+//                    print("habit", habit)
+//                    Log("fact added \(habit.objectId ?? "") facts: \(habit.facts)", type: .info)
+//                }
+                let type = HabitList.addFact(habit: habit)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
+            case .failure(let error):
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
+            }
+        }
+    }
+
 }
 
 
 
 struct Cloud: ParseCloud {
-    typealias ReturnType = Checklist
+    typealias ReturnType = Habit
     var functionJobName: String
     var habit: Habit
     var frequency: Int
     //var argument1: [String: Int] = ["test": 5]
+}
+
+struct RemoveFromChecklist: ParseCloud {
+    typealias ReturnType = Habit
+    var functionJobName: String
+    var habit: Habit
+}
+
+struct CreateFactCloud: ParseCloud {
+    typealias ReturnType = [Habit]
+    var functionJobName: String
+    var habit: Habit
+    var frequency: Int
+}
+
+struct GetHabitsCloud: ParseCloud {
+    typealias ReturnType = [Habit]
+    var functionJobName: String
 }

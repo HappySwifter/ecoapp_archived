@@ -21,6 +21,20 @@
 		AC4EBB8B2664193E00066594 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EBB842664193E00066594 /* ProfileModels.swift */; };
 		AC4EBB8C2664193E00066594 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EBB852664193E00066594 /* ProfileViewController.swift */; };
 		AC4EBB8D2664193E00066594 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EBB862664193E00066594 /* ProfileInteractor.swift */; };
+		AC5CF3CF267D153900EE9FE2 /* HabitCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3CE267D153900EE9FE2 /* HabitCategory.swift */; };
+		AC5CF3D1267D24D300EE9FE2 /* HabitDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3D0267D24D300EE9FE2 /* HabitDifficulty.swift */; };
+		AC5CF3D4267F3FCD00EE9FE2 /* TabBarVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF3D3267F3FCD00EE9FE2 /* TabBarVC.storyboard */; };
+		AC5CF3D6267F3FEB00EE9FE2 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3D5267F3FEB00EE9FE2 /* TabBarVC.swift */; };
+		AC5CF3DF267F407400EE9FE2 /* TodayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3D8267F407400EE9FE2 /* TodayPresenter.swift */; };
+		AC5CF3E0267F407400EE9FE2 /* TodayWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3D9267F407400EE9FE2 /* TodayWorker.swift */; };
+		AC5CF3E1267F407400EE9FE2 /* TodayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3DA267F407400EE9FE2 /* TodayRouter.swift */; };
+		AC5CF3E2267F407400EE9FE2 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF3DB267F407400EE9FE2 /* TodayViewController.storyboard */; };
+		AC5CF3E3267F407400EE9FE2 /* TodayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3DC267F407400EE9FE2 /* TodayModels.swift */; };
+		AC5CF3E4267F407400EE9FE2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3DD267F407400EE9FE2 /* TodayViewController.swift */; };
+		AC5CF3E5267F407400EE9FE2 /* TodayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3DE267F407400EE9FE2 /* TodayInteractor.swift */; };
+		AC5CF3E8267F4AD300EE9FE2 /* TodayChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3E7267F4AD300EE9FE2 /* TodayChecklistView.swift */; };
+		AC5CF3EA267F564700EE9FE2 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3E9267F564700EE9FE2 /* Date+Extensions.swift */; };
+		AC5CF3EC267F9DD000EE9FE2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF3EB267F9DD000EE9FE2 /* Date.swift */; };
 		AC601BCA26330AE0001DDE01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC601BC926330AE0001DDE01 /* AppDelegate.swift */; };
 		AC601BD426330AE0001DDE01 /* EcoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC601BD226330AE0001DDE01 /* EcoApp.xcdatamodeld */; };
 		AC601BD626330AE2001DDE01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC601BD526330AE2001DDE01 /* Assets.xcassets */; };
@@ -66,6 +80,7 @@
 		ACF5000F2657D97000A3302C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF500082657D97000A3302C /* RegisterViewController.swift */; };
 		ACF500102657D97000A3302C /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF500092657D97000A3302C /* RegisterInteractor.swift */; };
 		ACF9FD322662280700D22FB5 /* Login+UserPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9FD312662280700D22FB5 /* Login+UserPass.swift */; };
+		ACFC5FE4267D14D9007F5AF9 /* HabitGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC5FE3267D14D9007F5AF9 /* HabitGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +145,20 @@
 		AC4EBB842664193E00066594 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
 		AC4EBB852664193E00066594 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AC4EBB862664193E00066594 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		AC5CF3CE267D153900EE9FE2 /* HabitCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCategory.swift; sourceTree = "<group>"; };
+		AC5CF3D0267D24D300EE9FE2 /* HabitDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDifficulty.swift; sourceTree = "<group>"; };
+		AC5CF3D3267F3FCD00EE9FE2 /* TabBarVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarVC.storyboard; sourceTree = "<group>"; };
+		AC5CF3D5267F3FEB00EE9FE2 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		AC5CF3D8267F407400EE9FE2 /* TodayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPresenter.swift; sourceTree = "<group>"; };
+		AC5CF3D9267F407400EE9FE2 /* TodayWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorker.swift; sourceTree = "<group>"; };
+		AC5CF3DA267F407400EE9FE2 /* TodayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRouter.swift; sourceTree = "<group>"; };
+		AC5CF3DB267F407400EE9FE2 /* TodayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodayViewController.storyboard; sourceTree = "<group>"; };
+		AC5CF3DC267F407400EE9FE2 /* TodayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayModels.swift; sourceTree = "<group>"; };
+		AC5CF3DD267F407400EE9FE2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		AC5CF3DE267F407400EE9FE2 /* TodayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayInteractor.swift; sourceTree = "<group>"; };
+		AC5CF3E7267F4AD300EE9FE2 /* TodayChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayChecklistView.swift; sourceTree = "<group>"; };
+		AC5CF3E9267F564700EE9FE2 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		AC5CF3EB267F9DD000EE9FE2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AC601BC626330AE0001DDE01 /* EcoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC601BC926330AE0001DDE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC601BD326330AE0001DDE01 /* EcoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EcoApp.xcdatamodel; sourceTree = "<group>"; };
@@ -176,6 +205,7 @@
 		ACF500082657D97000A3302C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ACF500092657D97000A3302C /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		ACF9FD312662280700D22FB5 /* Login+UserPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+UserPass.swift"; sourceTree = "<group>"; };
+		ACFC5FE3267D14D9007F5AF9 /* HabitGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitGroup.swift; sourceTree = "<group>"; };
 		B3361C77A3A61B20311DE1DE /* Pods-watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch.release.xcconfig"; path = "Target Support Files/Pods-watch/Pods-watch.release.xcconfig"; sourceTree = "<group>"; };
 		CAD09FEEDC441C6BE9BE41D4 /* Pods-EcoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcoApp.release.xcconfig"; path = "Target Support Files/Pods-EcoApp/Pods-EcoApp.release.xcconfig"; sourceTree = "<group>"; };
 		DE29DBB0AC3829717C0B942D /* Pods-watch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch.debug.xcconfig"; path = "Target Support Files/Pods-watch/Pods-watch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -238,7 +268,9 @@
 		AC420C0F2639B4EE00FA4A1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CF3EB267F9DD000EE9FE2 /* Date.swift */,
 				AC420C102639B4FD00FA4A1A /* UIviewController+Ext.swift */,
+				AC5CF3E9267F564700EE9FE2 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,12 +278,14 @@
 		AC420C132639B51F00FA4A1A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC5FE2267D14CB007F5AF9 /* HabitGroup */,
+				ACFC5FE5267D14F0007F5AF9 /* HabitCategory */,
+				AC9A1745266284EF003DC2A4 /* Habit */,
 				AC9CF97D266CAB88000DD6E8 /* Checklist */,
 				AC4EBB7A2663D98F00066594 /* HabitFact */,
 				AC74B3C32662933A00C5C3DF /* CoreData */,
 				ACB52F912639B55A002137FF /* User.swift */,
 				ACF358EF263B0CA00095ED12 /* Installation.swift */,
-				AC9A1745266284EF003DC2A4 /* Habit */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,6 +310,38 @@
 				AC4EBB832664193E00066594 /* ProfileViewController.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		AC5CF3D2267F3FA700EE9FE2 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CF3D3267F3FCD00EE9FE2 /* TabBarVC.storyboard */,
+				AC5CF3D5267F3FEB00EE9FE2 /* TabBarVC.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AC5CF3D7267F406500EE9FE2 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CF3E6267F4AC500EE9FE2 /* Views */,
+				AC5CF3D8267F407400EE9FE2 /* TodayPresenter.swift */,
+				AC5CF3D9267F407400EE9FE2 /* TodayWorker.swift */,
+				AC5CF3DA267F407400EE9FE2 /* TodayRouter.swift */,
+				AC5CF3DC267F407400EE9FE2 /* TodayModels.swift */,
+				AC5CF3DE267F407400EE9FE2 /* TodayInteractor.swift */,
+				AC5CF3DD267F407400EE9FE2 /* TodayViewController.swift */,
+				AC5CF3DB267F407400EE9FE2 /* TodayViewController.storyboard */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		AC5CF3E6267F4AC500EE9FE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CF3E7267F4AD300EE9FE2 /* TodayChecklistView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AC601BBD26330AE0001DDE01 = {
@@ -349,6 +415,7 @@
 				AC4EBB7B2663D9AB00066594 /* HabbitModel.swift */,
 				AC9A1743266284EA003DC2A4 /* HabitStruct.swift */,
 				AC74B3D52662AD7800C5C3DF /* Habitable.swift */,
+				AC5CF3D0267D24D300EE9FE2 /* HabitDifficulty.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -364,10 +431,12 @@
 		ACB52F952639B632002137FF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CF3D2267F3FA700EE9FE2 /* TabBar */,
+				AC5CF3D7267F406500EE9FE2 /* Today */,
+				ACB52F962639B648002137FF /* HabitList */,
 				AC4EBB7F266418F500066594 /* Profile */,
 				ACF500022657D95D00A3302C /* Register */,
 				AC420C022639B34F00FA4A1A /* Login */,
-				ACB52F962639B648002137FF /* HabitList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -424,6 +493,22 @@
 				ACF500062657D97000A3302C /* RegisterViewController.storyboard */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		ACFC5FE2267D14CB007F5AF9 /* HabitGroup */ = {
+			isa = PBXGroup;
+			children = (
+				ACFC5FE3267D14D9007F5AF9 /* HabitGroup.swift */,
+			);
+			path = HabitGroup;
+			sourceTree = "<group>";
+		};
+		ACFC5FE5267D14F0007F5AF9 /* HabitCategory */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CF3CE267D153900EE9FE2 /* HabitCategory.swift */,
+			);
+			path = HabitCategory;
 			sourceTree = "<group>";
 		};
 		F6191DA24CE90152A8F7B276 /* Pods */ = {
@@ -556,7 +641,9 @@
 				AC601BD926330AE2001DDE01 /* LaunchScreen.storyboard in Resources */,
 				AC420C082639B39500FA4A1A /* LoginViewController.storyboard in Resources */,
 				AC4EBB8A2664193E00066594 /* ProfileViewController.storyboard in Resources */,
+				AC5CF3D4267F3FCD00EE9FE2 /* TabBarVC.storyboard in Resources */,
 				ACF5000D2657D97000A3302C /* RegisterViewController.storyboard in Resources */,
+				AC5CF3E2267F407400EE9FE2 /* TodayViewController.storyboard in Resources */,
 				AC601BD626330AE2001DDE01 /* Assets.xcassets in Resources */,
 				ACC4EBD72639B881005D9728 /* HabitListViewController.storyboard in Resources */,
 			);
@@ -611,6 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACFC5FE4267D14D9007F5AF9 /* HabitGroup.swift in Sources */,
 				AC9A1744266284EA003DC2A4 /* HabitStruct.swift in Sources */,
 				AC601BCA26330AE0001DDE01 /* AppDelegate.swift in Sources */,
 				ACF358F0263B0CA00095ED12 /* Installation.swift in Sources */,
@@ -618,25 +706,34 @@
 				AC74B3D62662AD7800C5C3DF /* Habitable.swift in Sources */,
 				ACC4EBE42639C42D005D9728 /* Login+Apple.swift in Sources */,
 				ACC4EBE72639D240005D9728 /* Login+Router.swift in Sources */,
+				AC5CF3EA267F564700EE9FE2 /* Date+Extensions.swift in Sources */,
+				AC5CF3E1267F407400EE9FE2 /* TodayRouter.swift in Sources */,
 				AC420C052639B36600FA4A1A /* LoginViewController.swift in Sources */,
+				AC5CF3EC267F9DD000EE9FE2 /* Date.swift in Sources */,
 				AC74B3CA2662943800C5C3DF /* CoraDataPredicates.swift in Sources */,
 				AC74B3C52662934900C5C3DF /* CoreDataHelpers.swift in Sources */,
 				AC74B3C8266293C000C5C3DF /* Log.swift in Sources */,
+				AC5CF3E0267F407400EE9FE2 /* TodayWorker.swift in Sources */,
 				AC4EBB872664193E00066594 /* ProfilePresenter.swift in Sources */,
 				ACF9FD322662280700D22FB5 /* Login+UserPass.swift in Sources */,
 				ACF5000E2657D97000A3302C /* RegisterModels.swift in Sources */,
 				ACF5000C2657D97000A3302C /* RegisterRouter.swift in Sources */,
 				AC4EBB8B2664193E00066594 /* ProfileModels.swift in Sources */,
 				ACC4EBD02639B859005D9728 /* HabitListWorker.swift in Sources */,
+				AC5CF3E4267F407400EE9FE2 /* TodayViewController.swift in Sources */,
 				AC3A05D92639E8E400EA4FBE /* Login+facebook.swift in Sources */,
 				AC74B3CC266298B200C5C3DF /* NetworkReachability.swift in Sources */,
 				AC420C112639B4FD00FA4A1A /* UIviewController+Ext.swift in Sources */,
+				AC5CF3CF267D153900EE9FE2 /* HabitCategory.swift in Sources */,
 				AC601BD426330AE0001DDE01 /* EcoApp.xcdatamodeld in Sources */,
+				AC5CF3E5267F407400EE9FE2 /* TodayInteractor.swift in Sources */,
 				ACF5000F2657D97000A3302C /* RegisterViewController.swift in Sources */,
+				AC5CF3DF267F407400EE9FE2 /* TodayPresenter.swift in Sources */,
 				ACB52F922639B55A002137FF /* User.swift in Sources */,
 				ACF5000B2657D97000A3302C /* RegisterWorker.swift in Sources */,
 				AC4EBB7E2663D9DC00066594 /* HabitFact.swift in Sources */,
 				ACC4EBD42639B859005D9728 /* HabitListInteractor.swift in Sources */,
+				AC5CF3E8267F4AD300EE9FE2 /* TodayChecklistView.swift in Sources */,
 				AC74B3D126629D2D00C5C3DF /* HabbitCell.swift in Sources */,
 				ACF500102657D97000A3302C /* RegisterInteractor.swift in Sources */,
 				AC4EBB8D2664193E00066594 /* ProfileInteractor.swift in Sources */,
@@ -644,9 +741,12 @@
 				ACC4EBD22639B859005D9728 /* HabitListModels.swift in Sources */,
 				ACC4EBCF2639B859005D9728 /* HabitListPresenter.swift in Sources */,
 				ACC4EBD12639B859005D9728 /* HabitListRouter.swift in Sources */,
+				AC5CF3D1267D24D300EE9FE2 /* HabitDifficulty.swift in Sources */,
 				AC74B3CE26629BE300C5C3DF /* HabbitList+Collection.swift in Sources */,
 				ACC4EBD32639B859005D9728 /* HabitListViewController.swift in Sources */,
+				AC5CF3E3267F407400EE9FE2 /* TodayModels.swift in Sources */,
 				AC4EBB8C2664193E00066594 /* ProfileViewController.swift in Sources */,
+				AC5CF3D6267F3FEB00EE9FE2 /* TabBarVC.swift in Sources */,
 				ACF5000A2657D97000A3302C /* RegisterPresenter.swift in Sources */,
 				AC4EBB892664193E00066594 /* ProfileRouter.swift in Sources */,
 				AC9CF97F266CAB94000DD6E8 /* Checklist.swift in Sources */,

@@ -4,6 +4,7 @@
     <entity name="HabitModel" representedClassName="HabitModel" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="difficulty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="objectId" optional="YES" attributeType="String"/>
         <attribute name="photoUrl" optional="YES" attributeType="String"/>
@@ -12,6 +13,6 @@
     </entity>
     <elements>
         <element name="File" positionX="-63" positionY="0" width="128" height="29"/>
-        <element name="HabitModel" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="HabitModel" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

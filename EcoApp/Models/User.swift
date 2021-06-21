@@ -25,4 +25,5 @@ struct User: ParseUser {
 
     //: Your custom keys.
     var customKey: String?
+    var points: Int?
 }

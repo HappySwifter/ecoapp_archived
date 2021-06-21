@@ -14,7 +14,7 @@ import UIKit
 
 protocol HabitListPresentationLogic
 {
-  func presentSomething(response: HabitList.Something.Response)
+    func presentResponse(response: HabitList.Response)
 }
 
 class HabitListPresenter: HabitListPresentationLogic
@@ -23,9 +23,8 @@ class HabitListPresenter: HabitListPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: HabitList.Something.Response)
-  {
-    let viewModel = HabitList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentResponse(response: HabitList.Response) {
+        let viewModel = HabitList.ViewModel(type: response.type)
+        viewController?.display(viewModel: viewModel)
+    }
 }

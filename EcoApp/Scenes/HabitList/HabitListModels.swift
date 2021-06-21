@@ -11,21 +11,29 @@
 //
 
 import UIKit
+import ParseSwift
+
+enum ServerError: Error {
+    case parseError(error: ParseError)
+    case notConnected
+    case ubauthorized
+}
 
 enum HabitList
 {
-  // MARK: Use cases
+    case getHabits(habits: [Habit])
+    case addToCheckList(habit: Habit)
+    case removeFromChecklist(habit: Habit)
+    case addFact(habit: Habit)
+    
+    struct Request {
+        var type: HabitList
+    }
+    struct Response {
+        var type: Result<HabitList, ServerError>
+    }
+    struct ViewModel {
+        var type: Result<HabitList, ServerError>
+    }
   
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import ParseSwift
 import AuthenticationServices
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import UserNotifications
 
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window?.rootViewController = vc
 //        }
         
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+//        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
 //        let appleIDProvider = ASAuthorizationAppleIDProvider()
 //        appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
@@ -51,20 +51,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         
 
-        
+        #if targetEnvironment(simulator)
+          // your simulator code
+        #else
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
                  (granted, error) in
                  print("Permission granted: \(granted)")
                  guard granted else { return }
                  self.getNotificationSettings()
              }
+        #endif
+
         
         return true
     }
     
     func getNotificationSettings() {
          UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-             print("Notification settings: \(settings)")
+//             print("Notification settings: \(settings)")
              guard settings.authorizationStatus == .authorized else { return }
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
@@ -73,9 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      }
     
     func routeToHabitList() {
-        let vc = getController(forName: HabitListViewController.self)
-        let nav = UINavigationController(rootViewController: vc)
-        window?.rootViewController = nav
+        let vc = getController(forName: TabBarVC.self)
+//        let nav = UINavigationController(rootViewController: vc)
+        window?.rootViewController = vc
     }
     
     func logoutUser() {
@@ -113,14 +117,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("error reg push:", error)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        ApplicationDelegate.shared.application(
+//            app,
+//            open: url,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//        )
+//    }
 
 
     // MARK: - Core Data stack
