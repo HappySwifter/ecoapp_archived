@@ -18,6 +18,9 @@ import ParseSwift
 protocol HabitListBusinessLogic
 {
     func make(request: HabitList.Request)
+    func mockHabits(count: Int)
+    func mockFacts()
+    func mockLikes()
 }
 
 protocol HabitListDataStore
@@ -27,7 +30,7 @@ protocol HabitListDataStore
 class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
 {
   var presenter: HabitListPresentationLogic?
-  var worker: HabitListWorker?
+  var worker = HabitListWorker()
     
     
     func make(request: HabitList.Request) {
@@ -36,71 +39,45 @@ class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
             presenter?.presentResponse(response: res)
             return
         }
-        guard let _ = User.current else {
-            let res = HabitList.Response(type: .failure(.ubauthorized))
-            presenter?.presentResponse(response: res)
-            return
+        
+        // проверяем авторизацию
+        if request.type.requireAuth {
+            guard let _ = User.current else {
+                let res = HabitList.Response(type: .failure(.ubauthorized))
+                presenter?.presentResponse(response: res)
+                return
+            }
         }
+
         switch request.type {
         case .getHabits:
-            getHabitList(request: request)
-        case .addToCheckList(let habit):
-            addToChecklist(habit: habit, request: request)
-        case .removeFromChecklist(let habit):
-            removeFromChecklist(habit: habit, request: request)
+            getHabitList()
+        case .likeHabit(let habit):
+            likeHabit(habit: habit)
+        case .dislikeHabit(let habit):
+            dislikeHabit(habit: habit)
         case .addFact(let habit):
-            setHabitFact(habit: habit, request: request)
+            setHabitFact(habit: habit)
+        case .getChallenges:
+            getChallenges()
         }
     }
     
-    func addToChecklist(habit: Habit, request: HabitList.Request) {
-        let cloud = Cloud(functionJobName: "addToChecklist",
-                          habit: habit,
-                          frequency: habit.frequency!)
-        cloud.runFunction { [weak self] result in
-            switch result {
-            case .success(let habit):
-                Log("habit liked \(habit)", type: .info)
-                let type = HabitList.addToCheckList(habit: habit)
-                let res = HabitList.Response(type: .success(type))
-                self?.presenter?.presentResponse(response: res)
-            case .failure(let error):
-                let res = HabitList.Response(type: .failure(.parseError(error: error)))
-                self?.presenter?.presentResponse(response: res)
-            }
-        }
-    }
-    
-    func removeFromChecklist(habit: Habit, request: HabitList.Request) {
-        let cloud = RemoveFromChecklist(functionJobName: "removeFromChecklist",
-                          habit: habit)
-        cloud.runFunction { [weak self] result in
-            switch result {
-            case .success(let habit):
-                Log("habit unliked \(habit)", type: .info)
-                let type = HabitList.removeFromChecklist(habit: habit)
-                let res = HabitList.Response(type: .success(type))
-                self?.presenter?.presentResponse(response: res)
-            case .failure(let error):
-                let res = HabitList.Response(type: .failure(.parseError(error: error)))
-                self?.presenter?.presentResponse(response: res)
-            }
-        }
-    }
-    
-    func getHabitList(request: HabitList.Request) {
-        let cloud = GetHabitsCloud(functionJobName: "getHabits")
+    func getHabitList() {
+        
+        let measureFetch = Date()
+        let cloud = GetHabitsCloud(habitId: nil)
         cloud.runFunction { [weak self] result in
             switch result {
             case .success(let habits):
                 Log("habits count \(habits.count)", type: .info)
-                
-                let withFacts = habits
-                    .filter{ $0.lastFactDate != nil }
-                    .map{ "\($0.name ?? "") -> \($0.lastFactDate)" }
-                print(withFacts)
-                
-                
+                Log("measure fetch: \(Date().timeIntervalSince(measureFetch))", type: .warning)
+                let measureSave = Date()
+                for habit in habits {
+                    habit.saveHabit()
+                }
+                appDelegate.saveContext()
+                Log("measure save: \(Date().timeIntervalSince(measureSave))", type: .warning)
                 let type = HabitList.getHabits(habits: habits)
                 let res = HabitList.Response(type: .success(type))
                 self?.presenter?.presentResponse(response: res)
@@ -111,17 +88,49 @@ class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
         }
     }
     
-    func setHabitFact(habit: Habit, request: HabitList.Request) {
-        let cloud = CreateFactCloud(functionJobName: "createFact",
-                                    habit: habit, frequency: habit.frequency!)
+    func likeHabit(habit: Habit) {
+        let cloud = LikeHabitCloud(habit: habit,
+                          frequency: habit.frequency!)
         cloud.runFunction { [weak self] result in
             switch result {
-            case .success(let habits):
-//                for habit in habits {
-//                    print("name", habit.name!, ":  _created_at", habit.facts?.first?._created_at?.fullDateString() ?? "")
-//                    print("habit", habit)
-//                    Log("fact added \(habit.objectId ?? "") facts: \(habit.facts)", type: .info)
-//                }
+            case .success(let habit):
+                habit.saveHabit()
+                appDelegate.saveContext()
+                let type = HabitList.likeHabit(habit: habit)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
+            case .failure(let error):
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
+            }
+        }
+    }
+    
+    func dislikeHabit(habit: Habit) {
+
+        let cloud = DislikeHabitCloud(habit: habit)
+        cloud.runFunction { [weak self] result in
+            switch result {
+            case .success(let habit):
+                habit.saveHabit()
+                appDelegate.saveContext()
+                let type = HabitList.dislikeHabit(habit: habit)
+                let res = HabitList.Response(type: .success(type))
+                self?.presenter?.presentResponse(response: res)
+            case .failure(let error):
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
+            }
+        }
+    }
+        
+    func setHabitFact(habit: Habit) {
+        let cloud = CreateFactCloud(habit: habit)
+        cloud.runFunction { [weak self] result in
+            switch result {
+            case .success(let habit):
+                habit.saveHabit()
+                appDelegate.saveContext()
                 let type = HabitList.addFact(habit: habit)
                 let res = HabitList.Response(type: .success(type))
                 self?.presenter?.presentResponse(response: res)
@@ -131,33 +140,68 @@ class HabitListInteractor: HabitListBusinessLogic, HabitListDataStore
             }
         }
     }
-
+    
+    func getChallenges() {
+        let cloud = ChallengesCloud(challengeId: nil)
+        cloud.runFunction { [weak self] result in
+            switch result {
+            case .success(let challenges):
+                print(challenges.flatMap{ $0.habits })
+//                let type = HabitList.addFact(habit: habit)
+//                let res = HabitList.Response(type: .success(type))
+//                self?.presenter?.presentResponse(response: res)
+            case .failure(let error):
+                let res = HabitList.Response(type: .failure(.parseError(error: error)))
+                self?.presenter?.presentResponse(response: res)
+            }
+        }
+    }
+    
+    
+    func mockFacts() {
+        worker.mockFacts()
+    }
+    func mockLikes() {
+        worker.mockLikes()
+    }
+    func mockHabits(count: Int) {
+        worker.mockHabits(count: count)
+    }
 }
 
 
-
-struct Cloud: ParseCloud {
+struct LikeHabitCloud: ParseCloud {
     typealias ReturnType = Habit
-    var functionJobName: String
+    var functionJobName = "likeHabit"
     var habit: Habit
     var frequency: Int
-    //var argument1: [String: Int] = ["test": 5]
 }
 
-struct RemoveFromChecklist: ParseCloud {
+struct ChallengesCloud: ParseCloud {
+    typealias ReturnType = [Challenge]
+    var functionJobName = "getChallenges"
+    var challengeId: Int?
+}
+
+struct DislikeHabitCloud: ParseCloud {
     typealias ReturnType = Habit
-    var functionJobName: String
+    var functionJobName = "dislikeHabit"
     var habit: Habit
 }
 
 struct CreateFactCloud: ParseCloud {
-    typealias ReturnType = [Habit]
-    var functionJobName: String
+    typealias ReturnType = Habit
+    var functionJobName = "createFact"
     var habit: Habit
-    var frequency: Int
 }
 
 struct GetHabitsCloud: ParseCloud {
     typealias ReturnType = [Habit]
-    var functionJobName: String
+    var functionJobName = "getHabits"
+    var habitId: String?
+}
+
+struct HasAdminRoleCloud: ParseCloud {
+    typealias ReturnType = Bool
+    var functionJobName = "isAdmin"
 }

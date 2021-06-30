@@ -87,6 +87,9 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
 
         configureLayout()
         reloadHabits()
+//        interactor?.mockHabits(count: 1)
+//        interactor?.mockFacts()
+//        interactor?.mockLikes()
     }
     
     
@@ -115,17 +118,22 @@ class HabitListViewController: UIViewController, HabitListDisplayLogic
             case .getHabits(let habits):
                 self.habits = habits
                 applySnapshot(habbits: habits)
-            case .addToCheckList(let habit), .removeFromChecklist(let habit):
+            case .likeHabit(let habit),
+                 .dislikeHabit(let habit),
+                 .addFact(let habit):
                 
+                Log("mutate successful for: \(habit.name ?? "--"), habit like: \(String(describing: habit.isLiked ?? false))", type: .info)
+
                 for (index, _) in habits.enumerated() {
                     if habits[index].objectId == habit.objectId {
                         habits[index].isLiked = habit.isLiked
+//                        habits[index].lastFactDate = habit.lastFactDate
                         break
                     }
                 }
                 let habitToReload = habits.filter{ $0.objectId == habit.objectId }.first
                 applySnapshot(animatingDifferences: false, habbits: habits, reloadHabit: habitToReload)
-            case .addFact(let habit):
+            case .getChallenges(let challenges):
                 break
             }
         case .failure(let error):

@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3604A3D4A57D055195BC9168 /* Pods_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF4FFD71960C9FFA33C857E /* Pods_watch.framework */; };
+		AC292D792684886D00DFE090 /* ChecklistDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D722684886D00DFE090 /* ChecklistDetailsPresenter.swift */; };
+		AC292D7A2684886D00DFE090 /* ChecklistDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D732684886D00DFE090 /* ChecklistDetailsWorker.swift */; };
+		AC292D7B2684886D00DFE090 /* ChecklistDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D742684886D00DFE090 /* ChecklistDetailsRouter.swift */; };
+		AC292D7C2684886D00DFE090 /* ChecklistDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC292D752684886D00DFE090 /* ChecklistDetailsViewController.storyboard */; };
+		AC292D7D2684886D00DFE090 /* ChecklistDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D762684886D00DFE090 /* ChecklistDetailsModels.swift */; };
+		AC292D7E2684886D00DFE090 /* ChecklistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D772684886D00DFE090 /* ChecklistDetailsViewController.swift */; };
+		AC292D7F2684886D00DFE090 /* ChecklistDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC292D782684886D00DFE090 /* ChecklistDetailsInteractor.swift */; };
+		AC3743B92688B57F005C9088 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3743B82688B57F005C9088 /* Challenge.swift */; };
 		AC3A05D92639E8E400EA4FBE /* Login+facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A05D82639E8E400EA4FBE /* Login+facebook.swift */; };
 		AC420C052639B36600FA4A1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC420C042639B36600FA4A1A /* LoginViewController.swift */; };
 		AC420C082639B39500FA4A1A /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC420C072639B39500FA4A1A /* LoginViewController.storyboard */; };
@@ -48,6 +56,7 @@
 		AC74B3D126629D2D00C5C3DF /* HabbitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B3D026629D2D00C5C3DF /* HabbitCell.swift */; };
 		AC74B3D42662A1EF00C5C3DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AC74B3D32662A1EF00C5C3DF /* Kingfisher */; };
 		AC74B3D62662AD7800C5C3DF /* Habitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B3D52662AD7800C5C3DF /* Habitable.swift */; };
+		AC7B026D2682141D00E9BA4C /* temp.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7B026C2682141D00E9BA4C /* temp.png */; };
 		AC9A1744266284EA003DC2A4 /* HabitStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9A1743266284EA003DC2A4 /* HabitStruct.swift */; };
 		AC9CF97F266CAB94000DD6E8 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CF97E266CAB94000DD6E8 /* Checklist.swift */; };
 		ACB52F922639B55A002137FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB52F912639B55A002137FF /* User.swift */; };
@@ -131,6 +140,14 @@
 		310E1FC16B003CD3DD38D796 /* Pods_watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FF8460BC72281B26FF1946 /* Pods_EcoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF4FFD71960C9FFA33C857E /* Pods_watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC292D722684886D00DFE090 /* ChecklistDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsPresenter.swift; sourceTree = "<group>"; };
+		AC292D732684886D00DFE090 /* ChecklistDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsWorker.swift; sourceTree = "<group>"; };
+		AC292D742684886D00DFE090 /* ChecklistDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsRouter.swift; sourceTree = "<group>"; };
+		AC292D752684886D00DFE090 /* ChecklistDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChecklistDetailsViewController.storyboard; sourceTree = "<group>"; };
+		AC292D762684886D00DFE090 /* ChecklistDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsModels.swift; sourceTree = "<group>"; };
+		AC292D772684886D00DFE090 /* ChecklistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsViewController.swift; sourceTree = "<group>"; };
+		AC292D782684886D00DFE090 /* ChecklistDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDetailsInteractor.swift; sourceTree = "<group>"; };
+		AC3743B82688B57F005C9088 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		AC3A05D82639E8E400EA4FBE /* Login+facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+facebook.swift"; sourceTree = "<group>"; };
 		AC420C042639B36600FA4A1A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AC420C072639B39500FA4A1A /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
@@ -172,6 +189,7 @@
 		AC74B3CD26629BE300C5C3DF /* HabbitList+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HabbitList+Collection.swift"; sourceTree = "<group>"; };
 		AC74B3D026629D2D00C5C3DF /* HabbitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCell.swift; sourceTree = "<group>"; };
 		AC74B3D52662AD7800C5C3DF /* Habitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitable.swift; sourceTree = "<group>"; };
+		AC7B026C2682141D00E9BA4C /* temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temp.png; path = Assets.xcassets/temp/temp.imageset/temp.png; sourceTree = "<group>"; };
 		AC9A1743266284EA003DC2A4 /* HabitStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStruct.swift; sourceTree = "<group>"; };
 		AC9CF97E266CAB94000DD6E8 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		ACB52F912639B55A002137FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -252,6 +270,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC292D71268486F200DFE090 /* ChecklistDetails */ = {
+			isa = PBXGroup;
+			children = (
+				AC292D722684886D00DFE090 /* ChecklistDetailsPresenter.swift */,
+				AC292D732684886D00DFE090 /* ChecklistDetailsWorker.swift */,
+				AC292D742684886D00DFE090 /* ChecklistDetailsRouter.swift */,
+				AC292D752684886D00DFE090 /* ChecklistDetailsViewController.storyboard */,
+				AC292D762684886D00DFE090 /* ChecklistDetailsModels.swift */,
+				AC292D772684886D00DFE090 /* ChecklistDetailsViewController.swift */,
+				AC292D782684886D00DFE090 /* ChecklistDetailsInteractor.swift */,
+			);
+			path = ChecklistDetails;
+			sourceTree = "<group>";
+		};
+		AC3743B72688B571005C9088 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				AC3743B82688B57F005C9088 /* Challenge.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
 		AC420C022639B34F00FA4A1A /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +318,7 @@
 		AC420C132639B51F00FA4A1A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC3743B72688B571005C9088 /* Challenge */,
 				ACFC5FE2267D14CB007F5AF9 /* HabitGroup */,
 				ACFC5FE5267D14F0007F5AF9 /* HabitCategory */,
 				AC9A1745266284EF003DC2A4 /* Habit */,
@@ -376,6 +417,7 @@
 				AC420C0F2639B4EE00FA4A1A /* Extensions */,
 				AC601BD526330AE2001DDE01 /* Assets.xcassets */,
 				AC601BD726330AE2001DDE01 /* LaunchScreen.storyboard */,
+				AC7B026C2682141D00E9BA4C /* temp.png */,
 				AC601BDA26330AE2001DDE01 /* Info.plist */,
 				AC420C0D2639B40B00FA4A1A /* EcoApp.entitlements */,
 				AC601BD226330AE0001DDE01 /* EcoApp.xcdatamodeld */,
@@ -431,6 +473,7 @@
 		ACB52F952639B632002137FF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AC292D71268486F200DFE090 /* ChecklistDetails */,
 				AC5CF3D2267F3FA700EE9FE2 /* TabBar */,
 				AC5CF3D7267F406500EE9FE2 /* Today */,
 				ACB52F962639B648002137FF /* HabitList */,
@@ -640,8 +683,10 @@
 			files = (
 				AC601BD926330AE2001DDE01 /* LaunchScreen.storyboard in Resources */,
 				AC420C082639B39500FA4A1A /* LoginViewController.storyboard in Resources */,
+				AC7B026D2682141D00E9BA4C /* temp.png in Resources */,
 				AC4EBB8A2664193E00066594 /* ProfileViewController.storyboard in Resources */,
 				AC5CF3D4267F3FCD00EE9FE2 /* TabBarVC.storyboard in Resources */,
+				AC292D7C2684886D00DFE090 /* ChecklistDetailsViewController.storyboard in Resources */,
 				ACF5000D2657D97000A3302C /* RegisterViewController.storyboard in Resources */,
 				AC5CF3E2267F407400EE9FE2 /* TodayViewController.storyboard in Resources */,
 				AC601BD626330AE2001DDE01 /* Assets.xcassets in Resources */,
@@ -701,10 +746,12 @@
 				ACFC5FE4267D14D9007F5AF9 /* HabitGroup.swift in Sources */,
 				AC9A1744266284EA003DC2A4 /* HabitStruct.swift in Sources */,
 				AC601BCA26330AE0001DDE01 /* AppDelegate.swift in Sources */,
+				AC292D7D2684886D00DFE090 /* ChecklistDetailsModels.swift in Sources */,
 				ACF358F0263B0CA00095ED12 /* Installation.swift in Sources */,
 				AC4EBB7C2663D9AB00066594 /* HabbitModel.swift in Sources */,
 				AC74B3D62662AD7800C5C3DF /* Habitable.swift in Sources */,
 				ACC4EBE42639C42D005D9728 /* Login+Apple.swift in Sources */,
+				AC292D7F2684886D00DFE090 /* ChecklistDetailsInteractor.swift in Sources */,
 				ACC4EBE72639D240005D9728 /* Login+Router.swift in Sources */,
 				AC5CF3EA267F564700EE9FE2 /* Date+Extensions.swift in Sources */,
 				AC5CF3E1267F407400EE9FE2 /* TodayRouter.swift in Sources */,
@@ -725,24 +772,29 @@
 				AC74B3CC266298B200C5C3DF /* NetworkReachability.swift in Sources */,
 				AC420C112639B4FD00FA4A1A /* UIviewController+Ext.swift in Sources */,
 				AC5CF3CF267D153900EE9FE2 /* HabitCategory.swift in Sources */,
+				AC3743B92688B57F005C9088 /* Challenge.swift in Sources */,
 				AC601BD426330AE0001DDE01 /* EcoApp.xcdatamodeld in Sources */,
 				AC5CF3E5267F407400EE9FE2 /* TodayInteractor.swift in Sources */,
 				ACF5000F2657D97000A3302C /* RegisterViewController.swift in Sources */,
 				AC5CF3DF267F407400EE9FE2 /* TodayPresenter.swift in Sources */,
 				ACB52F922639B55A002137FF /* User.swift in Sources */,
 				ACF5000B2657D97000A3302C /* RegisterWorker.swift in Sources */,
+				AC292D7E2684886D00DFE090 /* ChecklistDetailsViewController.swift in Sources */,
 				AC4EBB7E2663D9DC00066594 /* HabitFact.swift in Sources */,
 				ACC4EBD42639B859005D9728 /* HabitListInteractor.swift in Sources */,
+				AC292D7A2684886D00DFE090 /* ChecklistDetailsWorker.swift in Sources */,
 				AC5CF3E8267F4AD300EE9FE2 /* TodayChecklistView.swift in Sources */,
 				AC74B3D126629D2D00C5C3DF /* HabbitCell.swift in Sources */,
 				ACF500102657D97000A3302C /* RegisterInteractor.swift in Sources */,
 				AC4EBB8D2664193E00066594 /* ProfileInteractor.swift in Sources */,
+				AC292D792684886D00DFE090 /* ChecklistDetailsPresenter.swift in Sources */,
 				AC4EBB882664193E00066594 /* ProfileWorker.swift in Sources */,
 				ACC4EBD22639B859005D9728 /* HabitListModels.swift in Sources */,
 				ACC4EBCF2639B859005D9728 /* HabitListPresenter.swift in Sources */,
 				ACC4EBD12639B859005D9728 /* HabitListRouter.swift in Sources */,
 				AC5CF3D1267D24D300EE9FE2 /* HabitDifficulty.swift in Sources */,
 				AC74B3CE26629BE300C5C3DF /* HabbitList+Collection.swift in Sources */,
+				AC292D7B2684886D00DFE090 /* ChecklistDetailsRouter.swift in Sources */,
 				ACC4EBD32639B859005D9728 /* HabitListViewController.swift in Sources */,
 				AC5CF3E3267F407400EE9FE2 /* TodayModels.swift in Sources */,
 				AC4EBB8C2664193E00066594 /* ProfileViewController.swift in Sources */,

@@ -285,3 +285,10 @@ extension Calendar {
     static let gregorian = Calendar(identifier: .gregorian)
 }
 
+//let formatter = RelativeDateTimeFormatter()
+//formatter.dateTimeStyle = .named
+//
+//formatter.localizedString(from: DateComponents(day: -1)) // "yesterday"
+//formatter.localizedString(from: DateComponents(day: 1)) // "Tomorrow"
+//formatter.localizedString(from: DateComponents(hour: 2)) // "in 2 hours"
+//formatter.localizedString(from: DateComponents(minute: 45)) // "in 45 minutes"

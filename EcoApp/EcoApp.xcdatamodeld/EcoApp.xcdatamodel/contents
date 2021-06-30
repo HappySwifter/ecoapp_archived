@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChallengeModel" representedClassName="ChallengeModel" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="finishDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isParticipating" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="objectId" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="hab2chall" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hab2ChallModel" inverseName="challenge" inverseEntity="Hab2ChallModel"/>
+    </entity>
     <entity name="File" representedClassName="File" syncable="YES" codeGenerationType="class"/>
-    <entity name="HabitModel" representedClassName="HabitModel" syncable="YES" codeGenerationType="class">
+    <entity name="Hab2ChallModel" representedClassName="Hab2ChallModel" syncable="YES">
+        <attribute name="objectId" optional="YES" attributeType="String"/>
+        <attribute name="points" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="targetDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChallengeModel" inverseName="hab2chall" inverseEntity="ChallengeModel"/>
+    </entity>
+    <entity name="HabitModel" representedClassName="HabitModel" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="isLiked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="objectId" optional="YES" attributeType="String"/>
         <attribute name="photoUrl" optional="YES" attributeType="String"/>
@@ -12,7 +30,9 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="File" positionX="-63" positionY="0" width="128" height="29"/>
-        <element name="HabitModel" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="File" positionX="-196.3525390625" positionY="-258.4004974365234" width="128" height="29"/>
+        <element name="HabitModel" positionX="-164.0294799804688" positionY="19.00778198242188" width="128" height="193"/>
+        <element name="ChallengeModel" positionX="270.8406372070312" positionY="-31.498046875" width="128" height="163"/>
+        <element name="Hab2ChallModel" positionX="41.6884765625" positionY="102.1591491699219" width="128" height="103"/>
     </elements>
 </model>

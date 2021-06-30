@@ -22,9 +22,19 @@ enum ServerError: Error {
 enum HabitList
 {
     case getHabits(habits: [Habit])
-    case addToCheckList(habit: Habit)
-    case removeFromChecklist(habit: Habit)
+    case likeHabit(habit: Habit)
+    case dislikeHabit(habit: Habit)
     case addFact(habit: Habit)
+    case getChallenges(challenges: [Challenge])
+    
+    var requireAuth: Bool {
+        switch self {
+        case .getHabits, .getChallenges:
+            return false
+        case .addFact, .dislikeHabit, .likeHabit:
+            return true
+        }
+    }
     
     struct Request {
         var type: HabitList

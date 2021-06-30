@@ -33,21 +33,43 @@ class TodayInteractor: TodayBusinessLogic, TodayDataStore
 
     func getChecklist(cb: @escaping ChecklistResult) {
         if appDelegate.isConnectedToServer() {
-            DispatchQueue.global().async {
-                let query = Checklist.query()
-                query.findAll { result in
-                    switch result {
-                    case .success(let checklist):
-                        cb(.success(checklist))
-                    case .failure(let error):
-                        print(error)
-                        cb(.failure(error))
-                    }
+            
+            let cloud = GetChecklistCloud()
+            cloud.runFunction { [weak self] result in
+                switch result {
+                case .success(let checklist):
+                    let ch = checklist.map{ "\($0.objectId) -- \($0.isCompleted)" }
+                    print(ch)
+                    cb(.success(checklist))
+                case .failure(let error):
+                    let res = HabitList.Response(type: .failure(.parseError(error: error)))
+//                    self?.presenter?.presentResponse(response: res)
+                    print(error)
+                    cb(.failure(error))
                 }
             }
+            
+            
+//            DispatchQueue.global().async {
+//                let query = Checklist.query()
+//                query.findAll { result in
+//                    switch result {
+//                    case .success(let checklist):
+//                        cb(.success(checklist))
+//                    case .failure(let error):
+//                        print(error)
+//                        cb(.failure(error))
+//                    }
+//                }
+//            }
             
         } else {
             Log("server is not reachable", type: .error)
         }
     }
+}
+
+struct GetChecklistCloud: ParseCloud {
+    typealias ReturnType = [Checklist]
+    var functionJobName = "getChecklist"
 }

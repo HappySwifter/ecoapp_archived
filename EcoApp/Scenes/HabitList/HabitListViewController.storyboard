@@ -81,13 +81,13 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSz-li-kG9" userLabel="Название привычки">
-                                                            <rect key="frame" x="0.0" y="65" width="250" height="99"/>
+                                                            <rect key="frame" x="0.0" y="65" width="250" height="77.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-ZW-w3z">
-                                                            <rect key="frame" x="0.0" y="165" width="250" height="16"/>
+                                                            <rect key="frame" x="0.0" y="143.5" width="250" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htT-aW-oP5">
                                                                     <rect key="frame" x="0.0" y="0.0" width="107" height="16"/>
@@ -103,6 +103,15 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhG-tS-ddD">
+                                                            <rect key="frame" x="0.0" y="160.5" width="250" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20.5" id="FKH-UN-Isb"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -116,6 +125,7 @@
                                         <size key="customSize" width="250" height="181"/>
                                         <connections>
                                             <outlet property="categoryLabel" destination="htT-aW-oP5" id="hXB-x0-5wg"/>
+                                            <outlet property="lastFactDateLabel" destination="EhG-tS-ddD" id="FYz-t1-rWH"/>
                                             <outlet property="likeButton" destination="Z1U-ZQ-7i9" id="I6f-cj-lHB"/>
                                             <outlet property="mainStackView" destination="inu-n7-A8F" id="ERV-dH-d6X"/>
                                             <outlet property="photoImageView" destination="3MQ-b6-3d3" id="Ylu-aM-Mnm"/>

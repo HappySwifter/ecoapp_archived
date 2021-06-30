@@ -17,6 +17,7 @@ struct Checklist: ParseObject {
     var habit: Habit?
     var user: User?
     var frequency: Int?
-    var lastCheckDate: Date?
+    var lastFactDate: Date?
+    var isCompleted: Bool
 }
 

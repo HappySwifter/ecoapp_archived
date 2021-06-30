@@ -19,6 +19,8 @@ class HabbitCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var lastFactDateLabel: UILabel!
+    
     var likeHandler: (() -> Void)?
     var addHandler: (() -> Void)?
 
@@ -33,6 +35,12 @@ class HabbitCell: UICollectionViewCell {
         if let photoUrl = habit.photo?.url {
             photoImageView.kf.setImage(with: photoUrl)
         }
+//        if let factDate = habit.lastFactDate {
+//            lastFactDateLabel.isHidden = false
+//            lastFactDateLabel.text = factDate.fullDateString()
+//        } else {
+            lastFactDateLabel.isHidden = true
+//        }
         let likeImage = (habit.isLiked ?? false) ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         likeButton.setImage(likeImage, for: .normal)
         

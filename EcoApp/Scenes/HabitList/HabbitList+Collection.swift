@@ -32,15 +32,17 @@ extension HabitListViewController: UICollectionViewDelegate {
             cell?.likeHandler = { [weak self] in
                 let req: HabitList.Request
                 if (habit.isLiked ?? false) {
-                    req = HabitList.Request(type: .removeFromChecklist(habit: habit))
+                    req = HabitList.Request(type: .dislikeHabit(habit: habit))
                 } else {
-                    req = HabitList.Request(type: .addToCheckList(habit: habit))
+                    req = HabitList.Request(type: .likeHabit(habit: habit))
                 }
                 self?.interactor?.make(request: req)
             }
             cell?.addHandler = { [weak self] in
-                let req = HabitList.Request(type: .addFact(habit: habit))
+//                let req = HabitList.Request(type: .addFact(habit: habit))
+                let req = HabitList.Request(type: .getChallenges(challenges: []))
                 self?.interactor?.make(request: req)
+                
             }
             return cell
         })

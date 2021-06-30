@@ -11,10 +11,74 @@
 //
 
 import UIKit
+import ParseSwift
 
 class HabitListWorker
 {
-  func doSomeWork()
-  {
-  }
+    func mockHabits(count: Int) {
+        let catQuery = HabitCategory.query()
+        catQuery.find { result in
+            switch result {
+            case .success(let cats):
+                let url = Bundle.main.url(forResource: "temp", withExtension: "png")!
+                let profilePic = ParseFile(name: "temp.png", localURL: url)
+
+                for i in 0..<count {
+                    do {
+                        let habit = Habit(objectId: nil, createdAt: nil, updatedAt: nil, ACL: try ParseACL.defaultACL(), name: "привычка номер \(i)", desc: "длинное описание привычки номер \(i)", points: i + 10, frequency: i, difficulty: i, category: cats.first, photo: profilePic, isLiked: nil)
+                        try habit.save()
+                    } catch {
+                        print(error)
+                    }
+
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func mockLikes() {
+        let cloud = GetHabitsCloud(functionJobName: "getHabits")
+        cloud.runFunction { result in
+            switch result {
+            case .success(let habits):
+                for (index, habit) in habits.enumerated() where index % 5 == 0  {
+                    do {
+                        let fact = Checklist(objectId: nil, createdAt: nil, updatedAt: nil, ACL: try ParseACL.defaultACL(), habit: habit, user: User.current!, frequency: habit.frequency, lastFactDate: nil, isCompleted: false)
+                        try fact.save()
+                        
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+    }
+    
+    func mockFacts() {
+        let cloud = GetHabitsCloud(functionJobName: "getHabits")
+        cloud.runFunction { result in
+            switch result {
+            case .success(let habits):
+                for (index, habit) in habits.enumerated().reversed() {
+                    do {
+                        for _ in 0..<10 {
+                            let fact = HabitFact(objectId: nil, createdAt: nil, updatedAt: nil, ACL: try ParseACL.defaultACL(), habit: habit, user: User.current!, points: habit.points)
+                            try fact.save()
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+    }
+
 }
